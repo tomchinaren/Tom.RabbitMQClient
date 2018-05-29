@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace UnitTest
 {
     [TestClass]
-    public class UnitTest1
+    public class RabbitMQClientTest
     {
         [TestMethod]
         public void Publish()
@@ -13,7 +13,7 @@ namespace UnitTest
 
             var exchange = "tom.ex";
             var key = "key.tom";
-            var i = 10;
+            var i = 1;
             Tom.RabbitMQClient.Client.GetInstance.Init("localhost", "guest", "guest");
             while (i > 0)
             {
@@ -37,6 +37,7 @@ namespace UnitTest
                 return true;
             });
 
+            Console.Read();
             System.Threading.Thread.Sleep(1000);
         }
     }
