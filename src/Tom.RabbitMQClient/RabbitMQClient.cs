@@ -56,10 +56,12 @@ namespace Tom.RabbitMQClient
 
                     var properties = channel.CreateBasicProperties();
                     properties.Persistent = _durable;
+                    //channel.ConfirmSelect(); 开启确认机制
 
                     var msgString = Newtonsoft.Json.JsonConvert.SerializeObject(message);
                     var bytes = Encoding.UTF8.GetBytes(msgString);
                     channel.BasicPublish(exchange, routingKey, properties, bytes);
+                    //var b = channel.WaitForConfirms();
 
                     if (log != null)
                     {
